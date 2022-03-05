@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "88ddfad2-c147-4960-9732-21acab4dc18b",
+		"name": "Alunos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Alunos",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"verificar os dados recebidos\", () => {\r",
+							"    pm.expect(pm.response.code).to.equal(200);\r",
+							"    const alunoJson = pm.response.json();\r",
+							"    pm.expect(alunoJson.matricula).to.equal(999);\r",
+							"    pm.expect(alunoJson.email).to.equal(\"pedro@gmail.com.br\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/alunos/999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alunos",
+						"999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incluir Aluno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"matricula\": 123,\r\n    \"nome\": \"Maria do Bairro\",\r\n    \"telefone\": \"1111-22222\",\r\n    \"email\": \"maria@yahoo.com.br\",\r\n    \"dataCadastro\": \"2022-03-05T16:26:30.0Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/alunos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alunos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar Aluno",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"matricula\": 123,\r\n    \"nome\": \"Maria do Bairro - Alterado\",\r\n    \"telefone\": \"0000-1236547\",\r\n    \"email\": \"mariadobairro@yahoo.com.br\",\r\n    \"dataCadastro\": \"2022-03-05T16:26:30.0Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/alunos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alunos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Aluno",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/alunos/123",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alunos",
+						"123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Incluir Outro Aluno",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/alunos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"alunos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
